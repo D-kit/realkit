@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <!-- Указание файла с приветствием-->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!-- Единственный сервлет берет на себя ответственность за передачу всех запросов остальным компонентам приложения -->
+    <servlet>
+        <!--По умолчанию после загрузки сервлета DispatcherServlet он загрузит
+            контекст приложения Spring из XML-файла с именем, соответствую-
+            щим имени сервлета. В данном случае - spring-servlet.xml находящегося в каталоге WEB-INF приложения -->
+        <servlet-name>spring</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>spring</servlet-name>
+        <url-pattern>/web/*</url-pattern>
+    </servlet-mapping>
+	
+</web-app>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                            http://www.springframework.org/schema/data/jpa
+                            http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+                            http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- Enables the Spring MVC @Controller programming model -->
+    <mvc:annotation-driven />
+
+    <!--Ищет jsp файлы
+        Отыскивает шаблон представления, содержащийся в WAR-файле веб-приложения. Путь
+        к шаблону определяется добавлением приставки и окончания к логическому имени представления
+    -->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--Представление  JstlView направляет запрос странице JSP, как и
+            InternalResourceView . Но дополнительно устанавливает JSTL-атрибуты
+            запроса, что позволяет пользоваться преимуществом наличия под-
+            держки интернационализации в JSTL-->
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!--Добавляет возможность использовать все аннотации, имеющиеся в Spring MVC-->
+    <context:annotation-config/>
+
+    <context:component-scan base-package="com.dkit.realkit.pages"/>
+    <context:component-scan base-package="com.dkit.realkit.services"/>
+
+	<!--Соединение к БД-->
+    <bean id="mainDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/realkit"/>
+        <property name="username" value="username"/>
+        <property name="password" value="password"/>
+    </bean>
+
+    <!--Ниже подключение JPA, hibernate-->
+    <!--LocalContainerEntityManagerFactoryBean создает фабрики EntityManagerFactory, управляемые контейнером -->
+	
+	<jpa:repositories base-package="com.dkit.realkit.repositories"/>
+	
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <!--ссылка на источник данных-->
+        <property name="dataSource" ref="mainDataSource"/>
+        <!-- JPA facet -->
+        <property name="persistenceUnitName" value="RealPersistenceUnit"/>
+        <!--В состав Spring входят несколько классов адаптеров JPA, включая HibernateJpaVendorAdapter-->
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="generateDdl" value="false"/>
+                <property name="showSql" value="true"/>
+                <property name="databasePlatform" value="org.hibernate.dialect.MySQL5Dialect"/>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- Поддержка управления сущностями -->
+    <bean id="entityManager" class="org.springframework.orm.jpa.support.SharedEntityManagerBean">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+
+    <!-- Поддержка управления транзакциями -->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+	
+    <!-- Элемент  <tx:annotation-driven>  сообщает фреймворку Spring про-
+    верить все компоненты в контексте приложения и отыскать отмечен-
+    ные аннотацией  @Transactional на уровне определения класса или на
+    уровне методов -->
+    <tx:annotation-driven />
+
+</beans>

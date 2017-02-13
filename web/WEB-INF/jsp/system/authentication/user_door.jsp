@@ -17,7 +17,7 @@
         <fieldset>
             <form action="<c:url value="/j_spring_security_check"/>" method="post">
                 <input tabindex="1" id="j_username"  name="j_username" required placeholder="Логин" title="">
-                <input tabindex="2" id="j_password" name="j_password" type="password" required placeholder="Пароль" title="">>
+                <input tabindex="2" id="j_password" name="j_password" type="password" required placeholder="Пароль" title="">
                 <input tabindex="3" type="submit" value="Войти">
                 <footer class="clearfix">
                     <p><a href="#">Забыли пароль?</a></p>

@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="realkit:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="realkit.war">
+      <element id="artifact" artifact-name="realkit:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="jpa-descriptors" facet="realkit/jpa/JPA" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

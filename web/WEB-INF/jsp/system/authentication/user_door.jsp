@@ -7,9 +7,9 @@
 	<meta charset="UTF-8">
 	<title>Вход в систему документооборота</title>
 	<link rel="stylesheet" href="<c:url value="/res/css/login.css"/>" media="screen" type="text/css" />
+	<link rel="stylesheet" href="<c:url value="/res/css/realkit.css"/>" media="screen" type="text/css" />
     <link rel="icon" href="<c:url value="/res/pics/logo.png"/>" type="image/x-icon">
 	<link rel="shortcut icon" href="<c:url value="/res/pics/logo.png"/>" type="image/x-icon">
-
 </head>
 <body>
     <div id="login-form">

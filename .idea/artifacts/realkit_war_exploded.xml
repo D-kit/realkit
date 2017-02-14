@@ -49,9 +49,6 @@
           <element id="library" level="project" name="Maven: javax.servlet:javax.servlet-api:3.1.0" />
         </element>
       </element>
-      <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/realkit/META-INF/MANIFEST.MF" />
-      </element>
       <element id="javaee-facet-resources" facet="realkit/web/Web" />
     </root>
   </artifact>

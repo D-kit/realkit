@@ -23,13 +23,8 @@ import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class AuthenticationPages {
-
-
     @RequestMapping(value = "/login")
-    public ModelAndView login(HttpServletRequest request, HttpServletResponse response) throws IOException {	
-		
-		Map<String, Object> model = new HashMap<String, Object>();
-        return new ModelAndView("system/authentication/user_door", "model", model);
-		
+    public String login(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        return "system/authentication/user_door";
     }
 }

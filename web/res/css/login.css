@@ -43,14 +43,14 @@
 	font-size: 14px;
 }
 
-#j_username,
+#username,
 #login-form input[type="password"] {
 	border: 1px solid #dcdcdc;
 	padding: 12px 10px;
 	width: 238px;
 }
 
-#j_username {
+#username {
 	border-radius: 3px 3px 0 0;
 }
 

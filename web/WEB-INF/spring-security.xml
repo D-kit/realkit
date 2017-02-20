@@ -3,10 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 						http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
-
-    <http/>
+    <http>
+        <intercept-url pattern="/web/welcome" access="hasRole('ROLE_USER')"/>
+        <form-login login-page="/web/login" default-target-url="/web/welcome"/>
+        <!--Пока отключил protection against CSRF-->
+        <csrf disabled="true"/>
+    </http>
     <user-service>
         <user name="user" password="password" authorities="ROLE_USER" />
     </user-service>
-
 </b:beans>

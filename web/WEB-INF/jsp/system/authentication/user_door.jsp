@@ -15,9 +15,10 @@
     <div id="login-form">
         <h1>Для входа в систему введите логин и пароль:</h1>
         <fieldset>
-            <form action="<c:url value="/j_spring_security_check"/>" method="post">
-                <input tabindex="1" id="j_username"  name="j_username" required placeholder="Логин" title="">
-                <input tabindex="2" id="j_password" name="j_password" type="password" required placeholder="Пароль" title="">
+            <%-- По умолчанию spring security 4.2.1 использует name="username", name="password" и /login --%>
+            <form action="<c:url value="/login"/>" method="post">
+                <input tabindex="1" id="username"  name="username" required placeholder="Логин" title="">
+                <input tabindex="2" id="password" name="password" type="password" required placeholder="Пароль" title="">
                 <input tabindex="3" type="submit" value="Войти">
                 <footer class="clearfix">
                     <p><a href="#">Забыли пароль?</a></p>

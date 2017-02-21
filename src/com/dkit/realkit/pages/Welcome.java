@@ -1,4 +1,4 @@
-package com.dkit.realkit.pages.system;
+package com.dkit.realkit.pages;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

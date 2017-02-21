@@ -15,7 +15,7 @@
     <div id="login-form">
         <h1>Для входа в систему введите логин и пароль:</h1>
         <fieldset>
-            <%-- По умолчанию spring security 4.2.1 использует name="username", name="password" и /login --%>
+            <%-- По умолчанию spring security 4.2.1 использует name="username", name="password" и value="/login" method="post" --%>
             <form action="<c:url value="/login"/>" method="post">
                 <input tabindex="1" id="username"  name="username" required placeholder="Логин" title="">
                 <input tabindex="2" id="password" name="password" type="password" required placeholder="Пароль" title="">
